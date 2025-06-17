@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-Powered Flashcard Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💖 FlashCard AI</h1>
+            <p>Transform your educational content into powerful learning flashcards using advanced AI technology with elegant Chrome-inspired design</p>
+        </div>
+
+        <div class="main-card">
+            <div class="input-section">
+                <div class="input-group">
+                    <label>📁 Upload Educational Content</label>
+                    <div class="file-upload-area" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📄</div>
+                        <div class="upload-text">Click to upload or drag & drop</div>
+                        <div class="upload-subtext">Supports TXT, PDF files</div>
+                        <input type="file" id="fileInput" accept=".txt,.pdf" />
+                    </div>
+                    <div id="fileInfo" class="file-info" style="display: none;"></div>
+                </div>
+
+                <div class="input-group">
+                    <label>✏ Or Paste Content Directly</label>
+                    <textarea class="text-input" id="textInput" placeholder="Paste your educational content here (textbook excerpts, lecture notes, etc.)..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>📚 Subject (Optional)</label>
+                    <select class="subject-select" id="subjectSelect">
+                        <option value="">Select subject to optimize prompts...</option>
+                        <option value="biology">Biology</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="physics">Physics</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="history">History</option>
+                        <option value="computer_science">Computer Science</option>
+                        <option value="psychology">Psychology</option>
+                        <option value="literature">Literature</option>
+                        <option value="economics">Economics</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button class="generate-btn" id="generateBtn" onclick="generateFlashcards()">
+                    ✨ Generate Flashcards with AI
+                </button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>AI is processing your content and generating flashcards...</p>
+            </div>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <div class="stats" id="stats"></div>
+            
+            <div class="flashcards-header">
+                <h2 class="flashcards-title">Generated Flashcards</h2>
+                <div class="export-buttons">
+                    <button class="export-btn" onclick="exportFlashcards('csv')">📊 Export CSV</button>
+                    <button class="export-btn" onclick="exportFlashcards('json')">📋 Export JSON</button>
+                    <button class="export-btn" onclick="exportFlashcards('anki')">🎯 Export Anki</button>
+                </div>
+            </div>
+
+            <div class="flashcards-grid" id="flashcardsGrid"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
